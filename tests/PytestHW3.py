@@ -1,6 +1,9 @@
 import pytest
 import HomeWork3
+import logging
 
+logging.basicConfig(level=logging.INFO)
+mylogger = logging.getLogger(
 
 @pytest.fixture
 def create_data_set():
@@ -14,13 +17,13 @@ def create_data_set():
     }
     return data_set
 
-
+@pytest.mark.homeWork3
 def test_split_male_female(create_data_set):
     print("test for split male and female function")
     male, female = HomeWork3.split_male_female(create_data_set)
     assert len(male) + len(female) == len(create_data_set)
 
-
+@pytest.mark.homeWork3
 def test_find_median_average(create_data_set):
     print("test for find median average function")
     avg, median = HomeWork3.find_median_average(create_data_set)
@@ -29,7 +32,7 @@ def test_find_median_average(create_data_set):
         sum1 += item["age"]
     assert avg * len(create_data_set) == sum1
 
-
+@pytest.mark.homeWork3
 def test_print_value_above(create_data_set):
     print("test for print values above function")
     none = HomeWork3.print_value_above(create_data_set)
